@@ -13,6 +13,7 @@
 		0318ACF0275D76BC0075D0A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0318ACEE275D76BC0075D0A6 /* Main.storyboard */; };
 		0318ACF2275D76BF0075D0A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0318ACF1275D76BF0075D0A6 /* Assets.xcassets */; };
 		0318ACF5275D76BF0075D0A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0318ACF3275D76BF0075D0A6 /* LaunchScreen.storyboard */; };
+		03F78C51275FC15000099995 /* SDCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F78C50275FC15000099995 /* SDCTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0318ACF1275D76BF0075D0A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0318ACF4275D76BF0075D0A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0318ACF6275D76BF0075D0A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03F78C50275FC15000099995 /* SDCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0318ACF1275D76BF0075D0A6 /* Assets.xcassets */,
 				0318ACF3275D76BF0075D0A6 /* LaunchScreen.storyboard */,
 				0318ACF6275D76BF0075D0A6 /* Info.plist */,
+				03F78C50275FC15000099995 /* SDCTextField.swift */,
 			);
 			path = ServerProject;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F78C51275FC15000099995 /* SDCTextField.swift in Sources */,
 				0318ACED275D76BC0075D0A6 /* ViewController.swift in Sources */,
 				0318ACE9275D76BC0075D0A6 /* AppDelegate.swift in Sources */,
 				0318ACEB275D76BC0075D0A6 /* SceneDelegate.swift in Sources */,
