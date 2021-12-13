@@ -9,11 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var textFieldLogin: UITextField = {
-        let text = UITextField()
+    //  MARK: - Elements
+    private var textFieldLogin: UILabel = {
+        let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.text = "Логин:"
-        text.allowsEditingTextAttributes = false
+//        text.isse
         return text
     }()
     
@@ -21,16 +22,14 @@ class ViewController: UIViewController {
         let text = SDCTextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.text = "UserName"
-//        text.maxLength = 10
         text.allowsEditingTextAttributes = false
         return text
     }()
     
-    private var textFieldPassword: UITextField = {
-        let text = UITextField()
+    private var textFieldPassword: UILabel = {
+        let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.text = "Пароль:"
-        text.allowsEditingTextAttributes = false
         return text
     }()
     
@@ -38,6 +37,8 @@ class ViewController: UIViewController {
         let text = SDCTextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.text = "Password"
+        text.adjustsFontSizeToFitWidth = true
+        text.isSecureTextEntry = true
         text.allowsEditingTextAttributes = false
         return text
     }()
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
     private var stackViewLogin: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = 18
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -56,6 +57,15 @@ class ViewController: UIViewController {
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    private let checkBox: UIButton = {
+        let button = UIButton()
+        button.tintColor = .black
+        button.isSelected = true
+        button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        button.addTarget(self, action: #selector(checkBoxPassword), for: .touchUpInside)
+        return button
     }()
 
     //  MARK: - Lifecycle
@@ -76,23 +86,42 @@ class ViewController: UIViewController {
     }
     
     private func setupLayouts() {
-        stackViewLogin.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: -view.frame.size.width / 5).isActive = true
-        stackViewLogin.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
-        stackViewPassword.leadingAnchor.constraint(equalTo: stackViewLogin.leadingAnchor).isActive = true
-        stackViewPassword.topAnchor.constraint(equalTo: stackViewLogin.bottomAnchor, constant: 10).isActive = true
+        textFieldPasswordInput.frame.size.width = 250
+        NSLayoutConstraint.activate([
+            stackViewLogin.leadingAnchor.constraint(equalTo: view.centerXAnchor,
+                                                    constant: -view.frame.size.width / 5
+                                                   ),
+            stackViewLogin.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackViewPassword.leadingAnchor.constraint(equalTo: stackViewLogin.leadingAnchor),
+            stackViewPassword.topAnchor.constraint(equalTo: stackViewLogin.bottomAnchor, constant: 10),
+            
+//            checkBox.centerXAnchor.constraint(equalTo: stackViewPassword.centerXAnchor, constant: 0),
+//            checkBox.leadingAnchor.constraint(equalTo: stackViewPassword.leadingAnchor,constant: 0)
+        ])
     }
     
     private func setupHierarchy() {
         view.addSubview(stackViewLogin)
         view.addSubview(stackViewPassword)
-
+        
+        
         stackViewLogin.addArrangedSubview(textFieldLogin)
         stackViewLogin.addArrangedSubview(textFieldLoginInput)
         stackViewPassword.addArrangedSubview(textFieldPassword)
         stackViewPassword.addArrangedSubview(textFieldPasswordInput)
+        stackViewPassword.addArrangedSubview(checkBox)
     }
     
+    @IBAction func checkBoxPassword(sender: UIButton) {
+        if sender.isSelected {
+            sender.setImage(UIImage(systemName: "square"), for: .normal)
+            textFieldPasswordInput.isSecureTextEntry = false
+        } else {
+            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            textFieldPasswordInput.isSecureTextEntry = true
+        }
+        sender.isSelected.toggle()
+    }
 }
 
 //  MARK: - Extensions
